@@ -1,4 +1,4 @@
-package main
+package app
 
 import (
 	"fmt"
@@ -146,7 +146,7 @@ func rgba(m image.Image) *image.RGBA {
 		return r
 	}
 	b := m.Bounds()
-	r := image.NewRGBA(b.Dx(), b.Dy())
+	r := image.NewRGBA(image.Rect(0, 0, b.Dx(), b.Dy()))
 	draw.Draw(r, b, m, image.ZP, draw.Src)
 	return r
 }
