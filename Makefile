@@ -1,5 +1,5 @@
 all:
 	clear
-	go run main.go
+	go run turkey.go
 
 .PHONY: all
