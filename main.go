@@ -91,7 +91,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 		t := urlMap[i]    // element type by index
 		em := elements[t] // element images by type
-		if p >= len(em) {
+		if int(p) >= len(em) {
 			panic(fmt.Sprintf("element index out of range %s: "+
 				"%d >= %d", t, p, len(em)))
 		}
