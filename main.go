@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"image"
 	"image/draw"
 	"image/jpeg"
 	"image/png"
+	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
@@ -74,7 +74,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	// Make a copy of the background to draw into.
 	bgRect := backgroundImage.Bounds()
-	m := image.NewRGBA(bgRect.Dx(), bgRect.Dy())
+	m := image.NewRGBA(image.Rect(0, 0, bgRect.Dx(), bgRect.Dy()))
 	draw.Draw(m, m.Bounds(), backgroundImage, image.ZP, draw.Over)
 
 	// Process each character of the request string.
