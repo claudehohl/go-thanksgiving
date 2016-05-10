@@ -64,6 +64,7 @@ var (
 
 func main() {
 	http.HandleFunc(prefix, handler)
+	// todo: listen locally.
 }
 
 // handler serves a turkey snapshot for the given request.
