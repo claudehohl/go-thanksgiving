@@ -1,4 +1,4 @@
-package app
+package main
 
 import (
 	"fmt"
@@ -62,7 +62,7 @@ var (
 	imageQuality = jpeg.Options{95}
 )
 
-func init() {
+func main() {
 	http.HandleFunc(prefix, handler)
 }
 

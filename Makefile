@@ -1,5 +1,5 @@
 all:
 	clear
-	go run app.go
+	go run main.go
 
 .PHONY: all
