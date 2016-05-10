@@ -1,8 +1,8 @@
-package app
+package main
 
 import (
 	"fmt"
-	"http"
+	"net/http"
 	"image"
 	"image/draw"
 	"image/jpeg"
@@ -68,20 +68,6 @@ func init() {
 
 // handler serves a turkey snapshot for the given request.
 func handler(w http.ResponseWriter, r *http.Request) {
-	// Defer a function to recover from any panics.
-	// When recovering from a panic, log the error condition to
-	// the App Engine dashboard and send the default image to the user.
-	defer func() {
-		if err := recover(); err != nil {
-			c := appengine.NewContext(r)
-			c.Errorf("%s", err)
-			c.Errorf("%s", "Traceback: "+r.RawURL)
-			if defaultImage != nil {
-				w.Header().Set("Content-type", "image/jpeg")
-				jpeg.Encode(w, defaultImage, &imageQuality)
-			}
-		}
-	}()
 
 	// Load images from disk on the first request.
 	loadOnce.Do(load)
