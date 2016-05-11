@@ -63,8 +63,9 @@ var (
 )
 
 func main() {
+	fmt.Printf("Server running at 8080\n")
 	http.HandleFunc(prefix, handler)
-	// todo: listen locally.
+	http.ListenAndServe(":8080", nil)
 }
 
 // handler serves a turkey snapshot for the given request.
@@ -106,6 +107,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-type", "image/jpeg")
 	w.Header().Set("cache-control", "public, max-age=259200")
 	jpeg.Encode(w, m, &imageQuality)
+	fmt.Printf("Served a png\n")
 }
 
 // loadOnce is used to call the load function only on the first request.
